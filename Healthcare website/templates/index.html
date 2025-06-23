@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VMedix</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center py-5">
+    <div class="row w-100 align-items-center justify-content-center g-4">
+      
+      <!-- Navigation Links -->
+      <div class="col-12 text-center mb-3">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        {% if 'username' in session %}
+          <p>Welcome, {{ session['username'] }}! <a href="{{ url_for('logout') }}">Logout</a></p>
+        {% else %}
+          <p><a href="{{ url_for('login') }}">Login</a> | <a href="{{ url_for('signup') }}">Sign Up</a></p>
+        {% endif %}
+      </div>
+      
+      <!-- Form Column -->
+      <div class="col-lg-6 col-md-8 d-flex justify-content-center">
+        <div class="survey-card w-100" style="max-width: 500px;">
+          <div class="d-flex justify-content-end mb-2">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="darkModeToggle">
+              <label class="form-check-label" for="darkModeToggle">Dark Mode</label>
+            </div>
+          </div>
+          <h1 class="text-center mb-4"><b>VMedix</b></h1>
+          <form method="POST" action="{{ url_for('index') }}">
+            <div class="mb-3">
+              <label for="Name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="text" name="text" required>
+            </div>
+            <div class="mb-3">
+              <label for="age" class="form-label">Age</label>
+              <input type="number" class="form-control" id="age" name="age" min="0" required>
+            </div>
+            <div class="mb-3">
+              <label for="gender" class="form-label">Gender</label>
+              <select class="form-select" id="gender" name="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="income" class="form-label">Total Income ($)</label>
+              <input type="number" step="0.01" class="form-control" id="income" name="income" min="0" required>
+            </div>
+            <h4>Expenses ($)</h4>
+            <div class="mb-3">
+              <label for="utilities" class="form-label">Utilities</label>
+              <div class="input-group">
+                <div class="input-group-text">
+                  <input class="form-check-input mt-0" type="checkbox" id="utilitiesCheckbox" aria-label="Enable Utilities input">
+                </div>
+                <input type="number" step="0.01" class="form-control" id="utilities" name="utilities" min="0" disabled>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="entertainment" class="form-label">Entertainment</label>
+              <div class="input-group">
+                <div class="input-group-text">
+                  <input class="form-check-input mt-0" type="checkbox" id="entertainmentCheckbox" aria-label="Enable Entertainment input">
+                </div>
+                <input type="number" step="0.01" class="form-control" id="entertainment" name="entertainment" min="0" disabled>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="school_fees" class="form-label">School Fees</label>
+              <div class="input-group">
+                <div class="input-group-text">
+                  <input class="form-check-input mt-0" type="checkbox" id="schoolFeesCheckbox" aria-label="Enable School Fees input">
+                </div>
+                <input type="number" step="0.01" class="form-control" id="school_fees" name="school_fees" min="0" disabled>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="shopping" class="form-label">Shopping</label>
+              <div class="input-group">
+                <div class="input-group-text">
+                  <input class="form-check-input mt-0" type="checkbox" id="shoppingCheckbox" aria-label="Enable Shopping input">
+                </div>
+                <input type="number" step="0.01" class="form-control" id="shopping" name="shopping" min="0" disabled>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="healthcare" class="form-label">Healthcare</label>
+              <div class="input-group">
+                <div class="input-group-text">
+                  <input class="form-check-input mt-0" type="checkbox" id="healthcareCheckbox" aria-label="Enable Healthcare input">
+                </div>
+                <input type="number" step="0.01" class="form-control" id="healthcare" name="healthcare" min="0" disabled>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-custom">Submit</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Image Column -->
+      <div class="col-lg-6 d-none d-lg-flex align-items-center justify-content-center">
+        <img src="{{ url_for('static', filename='images/healthcare-professionals-collaboration-0410-5710104.jpg') }}"
+             class="img-fluid rounded shadow" style="max-height: 600px; object-fit: cover;"
+             alt="Doctors Collaboration" />
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Dark Mode Toggle
+    const toggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    if (localStorage.getItem('darkMode') === 'true') {
+      body.classList.add('dark-mode');
+      toggle.checked = true;
+    }
+
+    toggle.addEventListener('change', () => {
+      body.classList.toggle('dark-mode');
+      localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+    });
+
+    // Expense Checkbox Toggle
+    document.querySelectorAll('.form-check-input').forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        const input = checkbox.closest('.input-group').querySelector('input[type="number"]');
+        input.disabled = !checkbox.checked;
+        if (!checkbox.checked) {
+          input.value = ''; // Clear the input when unchecked
+        }
+      });
+    });
+  </script>
+</body>
+</html>

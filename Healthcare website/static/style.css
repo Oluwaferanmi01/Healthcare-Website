@@ -1,0 +1,196 @@
+body {
+    background: 
+        linear-gradient(to right, rgba(227, 242, 253, 0.85), rgba(252, 228, 236, 0.85)),
+        url('/static/images/health-still-life-with-copy-space_23-2148854031.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 30px;
+    color: #333;
+}
+.survey-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.survey-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.btn-custom {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.btn-custom:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+}
+
+h1 {
+    color: #4a148c;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-weight: bold;
+    color: #37474f;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #5e35b1;
+    outline: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.input-group .toggle-password {
+  border-left: none; 
+  background-color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.input-group .toggle-password:hover {
+  background-color: #f8f9fa;
+}
+
+.input-group .toggle-password:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.input-group .form-check-input {
+  margin-top: 0; 
+  cursor: pointer;
+}
+
+.input-group .form-control:disabled {
+  background-color: #e9ecef; 
+  opacity: 0.6;
+}
+
+
+/* DARK MODE */
+body.dark-mode {
+    background:
+        linear-gradient(to right, rgba(30, 30, 47, 0.85), rgba(44, 44, 63, 0.85)),
+        url('/static/images/health-still-life-with-copy-space_23-2148854031.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #f0f0f0;
+}
+body.dark-mode h1 {
+    color: #ff80ab;
+}
+
+body.dark-mode .survey-card {
+    background: #2c2c3f;
+    color: #f0f0f0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .form-label {
+    color: #f8bbd0;
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+    background-color: #3a3a4f;
+    color: #ffffff;
+    border: 1px solid #6a1b9a;
+}
+
+body.dark-mode input:focus,
+body.dark-mode select:focus,
+body.dark-mode textarea:focus {
+    border-color: #ff4081;
+}
+
+body.dark-mode .btn-custom {
+    background: linear-gradient(135deg, #d500f9, #00bcd4);
+}
+
+body.dark-mode .btn-custom:hover {
+    background: linear-gradient(135deg, #00bcd4, #d500f9);
+}
+
+body.dark-mode .form-check-label {
+    color: #ccc;
+}
+
+body.dark-mode .input-group .toggle-password {
+  background-color: #495057;
+  color: #f8f9fa;
+  border-color: #6c757d;
+}
+
+body.dark-mode .input-group .toggle-password:hover {
+  background-color: #5c636a;
+}
+
+body.dark-mode .input-group .toggle-password:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+
+.input-group .form-control {
+  border-right: none; 
+}
+
+body.dark-mode .input-group .form-control {
+  border-right: none;
+}
+
+body.dark-mode .input-group .form-control:disabled {
+  background-color: #6c757d; 
+  opacity: 0.6;
+}
+
+.input-group-text {
+  background-color: #fff;
+  border-right: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .input-group-text {
+  background-color: #495057;
+  border-color: #6c757d;
+  color: #f8f9fa;
+}
+
+.input-group .form-control {
+  border-left: none; 
+}
+
+body.dark-mode .input-group .form-control {
+  border-left: none;
+}
